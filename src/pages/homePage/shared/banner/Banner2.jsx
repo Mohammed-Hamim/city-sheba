@@ -4,7 +4,7 @@ import bannerImg2 from '../../../../assets/banner/banner2.jpeg';
 const Banner2 = () => {
     return (
         <div
-            className="relative bg-green-100 min-h-[80vh] flex items-center justify-center"
+            className="relative rounded-sm bg-green-100 min-h-[80vh] flex items-center justify-center"
             style={{
                 background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${bannerImg2})`,
                 backgroundSize: "cover",
@@ -25,10 +25,10 @@ const Banner2 = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button className="btn btn-primary px-8 py-3 text-white hover:bg-green-700 shadow-lg">
+                    <button className="btn bg-green-500 border-0 px-8 py-3 text-white hover:bg-green-700 shadow-lg">
                         Report Now
                     </button>
-                    <button className="btn btn-outline btn-white px-8 py-3 hover:bg-white hover:text-green-700 shadow-lg">
+                    <button className="btn btn-outline border-green-600 text-white    px-8 py-3 hover:bg-white hover:text-green-700 shadow-lg">
                         Learn More
                     </button>
                 </div>

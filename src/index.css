@@ -15,3 +15,8 @@
   --color-secondary-content: oklch(98% 0.01 200);
   --color-accent: oklch(65% 0.25 160)
 }
+ 
+
+ul a.active{
+  background-color: rgb(194, 213, 194);
+}

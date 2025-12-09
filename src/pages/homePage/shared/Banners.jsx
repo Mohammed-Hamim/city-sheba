@@ -11,11 +11,11 @@ const Banners = () => {
             autoPlay={true}
             infiniteLoop={true}
         >
-            <div>
+            <div className='rounded-sm'>
                 <Banner1></Banner1>
             </div>
 
-            <div>
+            <div className='rounded-sm'>
                 <Banner2></Banner2>
             </div>
             <div>

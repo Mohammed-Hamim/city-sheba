@@ -5,10 +5,11 @@ import Logo from './Logo';
 const Navbar = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/all-issue">All-Issue</NavLink></li>
 
     </>
     return (
-        <div className="navbar py-2 bg-white shadow-sm text-gray-800">
+        <div className="navbar py-2 bg-white   text-gray-800">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-gray-700">

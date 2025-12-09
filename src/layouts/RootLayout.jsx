@@ -6,11 +6,15 @@ import Footer from '../components/Footer';
 const RootLayout = () => {
     return (
         <>
-        <Navbar></Navbar>
-       <div className='min-h-screen my-4 md:my-10'>
+       <div className='container mx-auto'>
+         <Navbar></Navbar>
+       </div>
+       <div className=' container mx-auto min-h-60 md:min-h-screen my-4 md:my-10'>
          <Outlet></Outlet>
        </div>
-        <Footer></Footer>
+        <div className='container mx-auto'>
+          <Footer></Footer>
+        </div>
             
         </>
     );
