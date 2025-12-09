@@ -3,12 +3,11 @@ import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center  py-5">
+        <div className="  flex items-center justify-center   ">
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
                 <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
                     Create an Account
                 </h2>
-
                 <form className="space-y-4">
                     {/* Name */}
                     <div>

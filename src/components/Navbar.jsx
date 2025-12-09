@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import Logo from './Logo';
 
 const Navbar = () => {
     const links = <>
@@ -7,7 +8,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar bg-white shadow-sm text-gray-800">
+        <div className="navbar py-2 bg-white shadow-sm text-gray-800">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-gray-700">
@@ -26,7 +27,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <a className="btn btn-ghost text-xl text-blue-600 font-bold">daisyUI</a>
+            <Logo></Logo>
             </div>
 
             <div className="navbar-center hidden lg:flex">
@@ -36,7 +37,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-                <button>
+                <button className='bg-green-600 btn text-white font-semibold '>
                     <Link to='/register'>Register</Link>
                 </button>
             </div>
