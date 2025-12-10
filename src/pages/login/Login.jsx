@@ -1,14 +1,30 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+    const {logIn}= useAuth()
+
+    const { handleSubmit, register, formState: { errors } } = useForm()
+    const handleLogIn = (data) => {
+        console.log(data)
+        logIn(data.email, data.password)
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
     return (
         <div className="flex items-center justify-center">
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
                 <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
                     Login to CitySheba
                 </h2>
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit(handleLogIn)}
+                    className="space-y-4">
                     {/* Email */}
                     <div>
                         <label className="block text-gray-700 font-medium mb-1">
@@ -16,9 +32,13 @@ const Login = () => {
                         </label>
                         <input
                             type="email"
+                            {...register('email', { required: true })}
                             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Enter your email"
                         />
+                        {errors.email?.type === "required"
+                            && <p className='text-red-500 text-sm'>Email is required</p>
+                        }
                     </div>
 
                     {/* Password */}
@@ -28,9 +48,21 @@ const Login = () => {
                         </label>
                         <input
                             type="password"
+                            {...register('password', {
+                                required: true,
+                                minLength: 6,
+                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
+                            })}
                             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Enter your password"
                         />
+
+                        {errors.password?.type === "required" && <p className='text-red-500 text-sm'>
+                            Password is required</p>}
+                        {errors.password?.type === "minLength" && <p className='text-red-500 text-sm'>
+                            Password must be 6 characters or longer</p>}
+                        {errors.password?.type === "pattern" && <p className='text-red-500 text-sm'>
+                            Password must contain at least one uppercase, one lowercase and one number </p>}
                     </div>
 
                     {/* Login Button */}
