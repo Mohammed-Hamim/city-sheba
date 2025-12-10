@@ -7,8 +7,8 @@ const Banner3 = () => {
             className="relative  bg-green-100 min-h-[80vh] flex items-center rounded-sm justify-center"
             style={{
                 background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(${bannerImg3})`,
-                backgroundSize: "cover",  
-                 
+                backgroundSize: "cover",
+
                 backgroundPosition: "center",
             }}
         >
@@ -26,11 +26,11 @@ const Banner3 = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button className="btn  bg-green-500 border-0 px-8 py-3 text-white hover:bg-green-700 shadow-lg">
+                    <button className="btn w-[150px] bg-green-600 border-0 px-8 py-3 text-gray-800 font-bold hover:bg-green-700 shadow-lg">
                         Join Now
                     </button>
-                    <button className="btn btn-outline  border-green-600 text-white px-8 py-3 hover:bg-white hover:text-green-700 shadow-lg">
-                        See How It Works
+                    <button className="btn w-[150px] btn-outline  border-green-600 text-white px-8 py-3 hover:bg-white hover:text-green-700 shadow-lg">
+                        Discover
                     </button>
                 </div>
             </div>

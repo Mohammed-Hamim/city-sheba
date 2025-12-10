@@ -9,7 +9,7 @@ const RootLayout = () => {
        <div className='container mx-auto'>
          <Navbar></Navbar>
        </div>
-       <div className=' container mx-auto min-h-60 md:min-h-screen my-4 md:my-10'>
+       <div className='container mx-auto px-4 md:px-0 min-h-60 md:min-h-screen my-4 md:my-10'>
          <Outlet></Outlet>
        </div>
         <div className='container mx-auto'>

@@ -24,11 +24,11 @@ const Banner1 = () => {
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button className="btn border-0 bg-green-600 px-8 py-3 text-white hover:bg-green-700 shadow-lg">
-                        Report an Issue
+                <div className="flex flex-col sm:flex-row items-center justify-center font-bold gap-4">
+                    <button className="btn w-[150px] border-0 bg-green-600 px-8 py-3 font-bold text-gray-800  hover:bg-green-700 shadow-lg">
+                        Report Now
                     </button>
-                    <button className="btn btn-outline border-green-600  text-white px-8 py-3 hover:bg-white hover:text-green-700 shadow-lg">
+                    <button className="btn w-[150px] font-bold btn-outline border-green-600  text-white px-8 py-3 hover:bg-white hover:text-green-700 shadow-lg">
                         Track Issues
                     </button>
                 </div>

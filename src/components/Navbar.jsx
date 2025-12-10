@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from './Logo';
 import useAuth from '../hooks/useAuth';
+import Loading from './Loading';
 
 const Navbar = () => {
     const { loading, user } = useAuth()
@@ -11,8 +12,10 @@ const Navbar = () => {
 
     </>
     console.log(loading, user)
+
+    if(!user) return <Loading></Loading>
     return (
-        <div className="navbar py-2 bg-white   text-gray-800">
+        <div className="navbar py-2 bg-green-50  text-gray-800">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-gray-700">
@@ -25,7 +28,7 @@ const Navbar = () => {
 
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow text-gray-700">
+                        className="menu menu-sm dropdown-content bg-white rounded-box z-1 space-y-2 mt-3 w-52 p-2 shadow text-gray-700">
 
                         {links}
                     </ul>
@@ -35,7 +38,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 text-gray-700 font-medium">
+                <ul className="menu menu-horizontal space-x-2 px-1 text-gray-700 font-medium">
                     {links}
                 </ul>
             </div>
