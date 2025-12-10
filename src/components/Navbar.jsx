@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from './Logo';
 import useAuth from '../hooks/useAuth';
 import Loading from './Loading';
+import NavModal from './NavModal';
 
 const Navbar = () => {
-    const { loading, user } = useAuth()
+    const { loading, user, LogOut } = useAuth()
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggleModal = () => setIsOpen(!isOpen);
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all-issue">All-Issue</NavLink></li>
@@ -13,7 +17,7 @@ const Navbar = () => {
     </>
     console.log(loading, user)
 
-    if(!user) return <Loading></Loading>
+    if (loading) return <Loading></Loading>
     return (
         <div className="navbar py-2 bg-green-50  text-gray-800">
             <div className="navbar-start">
@@ -44,9 +48,34 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-                <button className='bg-green-600 btn text-white font-semibold '>
-                    <Link to='/register'>Register</Link>
-                </button>
+                {
+                    user ? <div
+                        onClick={handleToggleModal}
+                        className='h-15 w-15 border-2 rounded-full border-green-500 relative'>
+                        <div>
+                            <img src={user.photoURL}
+                                className='rounded-full'
+                                alt="" />
+                        </div>
+                        <NavModal isOpen={isOpen}
+                            setIsOpen={setIsOpen}
+                            user_email={user?.email}
+                            user_name={user?.displayName}
+                            LogOut={LogOut}
+                        ></NavModal>
+                    </div> :
+                        <div className='flex'>
+                            <button className="btn mx-2 hidden md:block border-green-500 btn-outline text-black   font-semibold">
+                                <Link to='/login'>Login</Link>
+                            </button>
+
+                            <button className='bg-green-600 btn text-white font-semibold '>
+                                <Link to='/register'>Register</Link>
+                            </button>
+                        </div>
+                }
+
+
             </div>
         </div>
 

@@ -49,7 +49,6 @@ const Loading = () => {
                     }}
                 />
             </div>
-
             {/* Subtext */}
             <p className="mt-4 text-gray-600 text-sm">
                 Optimizing city infrastructure data...

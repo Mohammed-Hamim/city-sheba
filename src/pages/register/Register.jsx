@@ -4,14 +4,26 @@ import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { registerUser, googleSignIn } = useAuth()
+    const { registerUser, googleSignIn, setUser, updateUser } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const handleRegistration = (data) => {
         console.log(data)
+        const displayName = data.name
+        const photoURL = data.image[0]
         registerUser(data.email, data.password)
             .then(result => {
                 console.log(result.user)
+                // update profile
+                if (result.user) {
+                    updateUser({ displayName: displayName, photoURL: photoURL })
+                        .then(res => {
+                            // console.log(res)
+                        })
+                        .catch(err => {
+                            // console.log(err.message)
+                        })
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -22,6 +34,8 @@ const Register = () => {
         googleSignIn()
             .then(res => {
                 console.log(res.user)
+                setUser(res.user)
+
             })
             .catch(err => {
                 console.log(err)

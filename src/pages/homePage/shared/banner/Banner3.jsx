@@ -37,5 +37,4 @@ const Banner3 = () => {
         </div>
     );
 };
-
 export default Banner3;
