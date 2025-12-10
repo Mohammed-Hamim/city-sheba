@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from './Logo';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
+    const { loading, user } = useAuth()
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all-issue">All-Issue</NavLink></li>
 
     </>
+    console.log(loading, user)
     return (
         <div className="navbar py-2 bg-white   text-gray-800">
             <div className="navbar-start">
@@ -28,7 +31,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-            <Logo></Logo>
+                <Logo></Logo>
             </div>
 
             <div className="navbar-center hidden lg:flex">
