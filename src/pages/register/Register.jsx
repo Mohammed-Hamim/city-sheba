@@ -1,14 +1,21 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm()
+
+    const handleRegistration = (data) => {
+        console.log(data)
+    }
     return (
         <div className="  flex items-center justify-center   ">
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
                 <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
                     Create an Account
                 </h2>
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit(handleRegistration)}
+                    className="space-y-4">
                     {/* Name */}
                     <div>
                         <label className="block text-gray-700 font-medium mb-1">
@@ -16,10 +23,12 @@ const Register = () => {
                         </label>
                         <input
                             type="text"
-
+                            {...register("name", { required: true })}
                             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Enter your name"
                         />
+                        {errors.name?.type === "required" && <p className='text-red-500 text-sm'>
+                            Name is required</p>}
                     </div>
 
                     {/* Email */}
@@ -29,10 +38,12 @@ const Register = () => {
                         </label>
                         <input
                             type="email"
-
+                            {...register("email", { required: true })}
                             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Enter your email"
                         />
+                        {errors.email?.type === "required" && <p className='text-red-500 text-sm'>
+                            Email is required</p>}
                     </div>
 
                     {/* Password */}
@@ -42,11 +53,20 @@ const Register = () => {
                         </label>
                         <input
                             type="password"
-                            required
-
+                            {...register("password", {
+                                required: true,
+                                minLength: 6,
+                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
+                            })}
                             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
                             placeholder="Enter your password"
                         />
+                        {errors.password?.type === "required" && <p className='text-red-500 text-sm'>
+                            Password is required</p>}
+                        {errors.password?.type === "minLength" && <p className='text-red-500 text-sm'>
+                            Password must be 6 characters or longer</p>}
+                        {errors.password?.type === "pattern" && <p className='text-red-500 text-sm'>
+                            Password must contain at least one uppercase, one lowercase and one number </p>}
                     </div>
 
                     {/* Profile Image */}
@@ -56,6 +76,7 @@ const Register = () => {
                         </label>
                         <input
                             type="file"
+                            {...register("image")}
                             className="w-full text-gray-700"
                         />
                     </div>
