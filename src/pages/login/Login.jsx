@@ -4,18 +4,28 @@ import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const {logIn}= useAuth()
+    const { logIn, googleSignIn } = useAuth()
 
     const { handleSubmit, register, formState: { errors } } = useForm()
     const handleLogIn = (data) => {
         console.log(data)
         logIn(data.email, data.password)
-        .then(result =>{
-            console.log(result.user)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                console.log(res.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     return (
         <div className="flex items-center justify-center">
@@ -82,7 +92,7 @@ const Login = () => {
 
                 {/* Google Login */}
                 <button
-                    // onClick={handleGoogleLogin}
+                    onClick={handleGoogleSignIn}
                     className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-2 hover:bg-gray-100 transition"
                 >
                     <FcGoogle size={24} />

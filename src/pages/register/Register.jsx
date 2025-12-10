@@ -4,18 +4,28 @@ import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const {registerUser}=useAuth()
+    const { registerUser, googleSignIn } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const handleRegistration = (data) => {
         console.log(data)
         registerUser(data.email, data.password)
-        .then(result =>{
-            console.log(result.user)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    const handleGoogleSignUp = () => {
+        googleSignIn()
+            .then(res => {
+                console.log(res.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     return (
         <div className="  flex items-center justify-center   ">
@@ -82,10 +92,10 @@ const Register = () => {
                     <div>
                         <label className="block text-gray-700 font-medium mb-1">
                             Profile Image
-                        </label>                     
+                        </label>
                         <input type="file"
-                          {...register("image")}
-                         className="file-input w-full  file-input-success" />
+                            {...register("image")}
+                            className="file-input w-full  file-input-success" />
                     </div>
 
                     {/* Signup Button */}
@@ -105,7 +115,7 @@ const Register = () => {
 
                 {/* Google Login */}
                 <button
-
+                    onClick={handleGoogleSignUp}
                     className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-2 hover:bg-gray-100 transition"
                 >
                     <FcGoogle size={24} />
